@@ -18,7 +18,6 @@ public class IOClient {
             ObjectInputStream ois=new ObjectInputStream(socket.getInputStream());
             rpcResponse = (RpcResponse)ois.readObject();
             System.out.println("成功收到服务端响应");
-            System.out.println(rpcResponse);
         }catch(IOException | ClassNotFoundException e){
             e.printStackTrace();
         }
