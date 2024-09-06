@@ -1,6 +1,8 @@
 package com.mukee.Client.proxy;
 
-import com.mukee.Client.IOClient;
+import com.mukee.Client.rpcClient.RpcClient;
+import com.mukee.Client.rpcClient.impl.NettyRpcClient;
+import com.mukee.Client.rpcClient.impl.SimpleSocketClient;
 import com.mukee.common.Message.RpcRequest;
 import com.mukee.common.Message.RpcResponse;
 
@@ -17,8 +19,9 @@ public class ClientProxy implements InvocationHandler {
                 .params(args)
                 .paramsType(method.getParameterTypes())
                 .interfaceName(method.getDeclaringClass().getName()).build();
-        IOClient ioClient = new IOClient();
-        RpcResponse rpcResponse = ioClient.sendRequest(rpcRequest);
+        //SimpleSocketClient simpleSocketClient = new SimpleSocketClient();
+        RpcClient nettyRpcClient = new NettyRpcClient("127.0.0.1",8080);
+        RpcResponse rpcResponse = nettyRpcClient.sendRequest(rpcRequest);
         return rpcResponse.getData();
     }
 

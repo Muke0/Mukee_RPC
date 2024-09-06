@@ -1,5 +1,6 @@
-package com.mukee.Client;
+package com.mukee.Client.rpcClient.impl;
 
+import com.mukee.Client.rpcClient.RpcClient;
 import com.mukee.common.Message.RpcRequest;
 import com.mukee.common.Message.RpcResponse;
 
@@ -8,7 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-public class IOClient {
+public class SimpleSocketClient implements RpcClient {
     public RpcResponse sendRequest(RpcRequest rpcRequest) {
         RpcResponse rpcResponse = null;
         try(Socket socket = new Socket("127.0.0.1", 8080)){

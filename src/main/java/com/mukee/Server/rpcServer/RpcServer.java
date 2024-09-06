@@ -1,4 +1,4 @@
-package com.mukee.Server;
+package com.mukee.Server.rpcServer;
 
 public interface RpcServer {
     //开启监听
