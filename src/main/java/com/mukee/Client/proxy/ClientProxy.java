@@ -20,7 +20,7 @@ public class ClientProxy implements InvocationHandler {
                 .paramsType(method.getParameterTypes())
                 .interfaceName(method.getDeclaringClass().getName()).build();
         //SimpleSocketClient simpleSocketClient = new SimpleSocketClient();
-        RpcClient nettyRpcClient = new NettyRpcClient("127.0.0.1",8080);
+        RpcClient nettyRpcClient = new NettyRpcClient();
         RpcResponse rpcResponse = nettyRpcClient.sendRequest(rpcRequest);
         return rpcResponse.getData();
     }

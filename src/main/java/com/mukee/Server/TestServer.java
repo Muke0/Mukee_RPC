@@ -9,11 +9,14 @@ import com.mukee.common.service.impl.UserServiceImpl;
 
 public class TestServer {
     public static void main(String[] args){
+        String serverHost = "127.0.0.1";
+        int serverPort = 9999;
         UserService userService = new UserServiceImpl();
-        ServiceProvider serviceProvider = new ServiceProvider();
+        ServiceProvider serviceProvider = new ServiceProvider(serverHost,serverPort);
         serviceProvider.provideServiceInterface(userService);
 
         RpcServer server = new NettyRPCServer(serviceProvider);
-        server.start(8080);
+        System.out.println("服务器启动成功");
+        server.start(serverPort);
     }
 }
