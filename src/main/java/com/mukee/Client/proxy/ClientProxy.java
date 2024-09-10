@@ -2,7 +2,6 @@ package com.mukee.Client.proxy;
 
 import com.mukee.Client.rpcClient.RpcClient;
 import com.mukee.Client.rpcClient.impl.NettyRpcClient;
-import com.mukee.Client.rpcClient.impl.SimpleSocketClient;
 import com.mukee.common.Message.RpcRequest;
 import com.mukee.common.Message.RpcResponse;
 
@@ -13,7 +12,7 @@ import java.lang.reflect.Proxy;
 public class ClientProxy implements InvocationHandler {
 
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args){
+    public Object invoke(Object proxy, Method method, Object[] args) throws InterruptedException {
         RpcRequest rpcRequest = RpcRequest.builder()
                 .methodName(method.getName())
                 .params(args)
